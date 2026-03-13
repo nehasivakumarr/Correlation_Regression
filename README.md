@@ -20,10 +20,70 @@ If y represents the dependent variable and x the independent variable, this rela
 ![image](https://user-images.githubusercontent.com/104613195/168225866-ac8f6610-bdc3-4ac2-a24e-2b24ba08e189.png)
 
 # Program :
+```
+import numpy as np
+import math
+import matplotlib.pyplot as plt
 
-![image](https://github.com/ramjan1729/Correlation_Regression/assets/103921593/9eb48cbf-8ca3-4cd9-8440-ff45fd98333e)
+x = [int(i) for i in input("Enter x values (space separated): ").split()]
+y = [int(i) for i in input("Enter y values (space separated): ").split()]
+
+if len(x) != len(y):
+    raise SystemExit("Error: x and y must have the same number of values.")
+
+N = len(x)
+
+Sx = 0
+Sy = 0
+Sxy = 0
+Sx2 = 0
+Sy2 = 0
+
+for i in range(N):
+    Sx += x[i]
+    Sy += y[i]
+    Sxy += x[i] * y[i]
+    Sx2 += x[i]**2
+    Sy2 += y[i]**2
+
+den = math.sqrt((N * Sx2 - Sx**2) * (N * Sy2 - Sy**2))
+
+if den == 0:
+    raise SystemExit("Denominator zero when computing correlation.")
+
+r = (N * Sxy - Sx * Sy) / den
+print("The Correlation coefficient is %0.3f" % r)
+
+byx = (N * Sxy - Sx * Sy) / (N * Sx2 - Sx**2)
+
+xmean = Sx / N
+ymean = Sy / N
+
+print("The Regression line Y on X is ::: y = %0.3f + %0.3f (x-%0.3f)" % (ymean, byx, xmean))
+
+plt.scatter(x, y)
+
+def Reg(xv):
+    return ymean + byx * (xv - xmean)
+
+x_plot = np.linspace(min(x), max(x), 51)
+y_plot = Reg(x_plot)
+
+plt.plot(x_plot, y_plot, 'r')
+plt.xlabel('x-data')
+plt.ylabel('y-data')
+plt.legend(['Regression Line', 'Data points'])
+plt.grid(True)
+plt.show()
+```
 
 
 # Result
+The correlation and regression for data analysis of objects from feeder using probability
+distribution are calculated.
+
 
 # Output 
+<img width="655" height="94" alt="image" src="https://github.com/user-attachments/assets/90d4c53c-4e61-4ca0-ab5d-e189c361484c" />
+
+<img width="729" height="554" alt="image" src="https://github.com/user-attachments/assets/3927e3e5-734e-4ba7-abba-b10259be6236" />
