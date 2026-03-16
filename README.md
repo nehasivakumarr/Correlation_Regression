@@ -76,14 +76,10 @@ plt.legend(['Regression Line', 'Data points'])
 plt.grid(True)
 plt.show()
 ```
+# Output 
 
 
 # Result
 The correlation and regression for data analysis of objects from feeder using probability
 distribution are calculated.
 
-
-# Output 
-<img width="655" height="94" alt="image" src="https://github.com/user-attachments/assets/90d4c53c-4e61-4ca0-ab5d-e189c361484c" />
-
-<img width="729" height="554" alt="image" src="https://github.com/user-attachments/assets/3927e3e5-734e-4ba7-abba-b10259be6236" />
